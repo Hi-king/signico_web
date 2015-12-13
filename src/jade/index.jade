@@ -1,8 +1,35 @@
 html(lang="ja-jp")
   include header
-  .container
-    h1 SIGNICO
-    h2 About
-    p 統計・機械学習を用いて世の中のわりとどうでも良い問題を検証します。
-    h2 C89
-    p SIGNICO はC89に出展します。
+  body
+    header
+      .navbar.navbar-default
+        .container
+          .navbar-header
+            a.navbar-brand(href="#")
+              | SIGNICO
+
+    
+    .container
+      .row
+        .jumbotron
+          h1 SIGNICO
+          p 統計・機械学習を用いて世の中のわりとどうでも良い問題を検証します。
+
+      .page-header
+        h1 コミックマーケット C89 
+      p 
+        | SIGNICO はC89で
+        span.text-danger
+          ３日目東ム60a "signico"
+        | にて"SIGNICO vol.1"を頒布します。
+      h2 SIGNICO vol.1 掲載論文一覧
+      .row
+        .col-lg-6
+          include ./papers/frame_interpolation
+        .col-lg-6
+          include ./papers/donmaru_recognition_api
+      .row
+        .col-lg-6
+          include ./papers/topic_model
+        .col-lg-6
+          include ./papers/dtam
