@@ -1,0 +1,21 @@
+{
+  "name": "signico_web",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Hi-king"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/Hi-king/signico_web",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "Umi": "~3.3.6-1"
+  }
+}
