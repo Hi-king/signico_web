@@ -35,7 +35,7 @@ gulp.task 'watch', ->
     watch assetsPattern, ->
         gulp.start ['assets']
 
-gulp.task 'webserver', ->
+gulp.task 'debugserver', ->
     gulp.src 'dist'
     .pipe webserver
         host: 'localhost'
@@ -43,6 +43,15 @@ gulp.task 'webserver', ->
         port: 8000
     .pipe open
         uri: 'http://localhost:8000'
+
+gulp.task 'webserver', ->
+    gulp.src 'dist'
+    .pipe webserver
+        host: '0.0.0.0'
+        port: 8000
+
+gulp.task 'debug', (cb)->
+    runSequence ['clean:all'], ['assets', 'jade'], ['watch', 'debugserver'], cb
 
 gulp.task 'run', (cb)->
     runSequence ['clean:all'], ['assets', 'jade'], ['watch', 'webserver'], cb

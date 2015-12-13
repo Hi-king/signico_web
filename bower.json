@@ -19,6 +19,7 @@
     "Umi": "~3.3.6-1"
   },
   "devDependencies": {
-    "jquery": "~2.1.4"
+    "jquery": "~2.1.4",
+    "masonry": "~3.3.2"
   }
 }
