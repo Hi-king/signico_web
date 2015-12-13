@@ -5,9 +5,10 @@ webserver = require 'gulp-webserver'
 open = require 'gulp-open'
 runSequence = require('run-sequence').use(gulp)
 del = require 'del'
+bowerFiles = require 'main-bower-files'
 
-jadePattern = ['src/jade/index.jade']
-
+jadePattern = ['src/jade/**']
+assetsPattern = ['src/assets/**']
 
 gulp.task 'clean:all', (cb) ->
       del 'dist/*', cb
@@ -18,9 +19,21 @@ gulp.task 'jade', ->
         pretty: true
     .pipe gulp.dest('dist')
 
+gulp.task 'assets', (callback) ->
+    gulp.src [
+        'bower_components/**/*.css',
+        'bower_components/**/*.js'
+    ]
+    .pipe gulp.dest('./dist/assets')
+    
+    gulp.src assetsPattern
+    .pipe gulp.dest('./dist/assets')
+
 gulp.task 'watch', ->
     watch jadePattern, ->
         gulp.start ['jade']
+    watch assetsPattern, ->
+        gulp.start ['assets']
 
 gulp.task 'webserver', ->
     gulp.src 'dist'
@@ -32,4 +45,4 @@ gulp.task 'webserver', ->
         uri: 'http://localhost:8000'
 
 gulp.task 'run', (cb)->
-    runSequence ['clean:all'], ['jade'], ['watch', 'webserver'], cb
+    runSequence ['clean:all'], ['assets', 'jade'], ['watch', 'webserver'], cb
