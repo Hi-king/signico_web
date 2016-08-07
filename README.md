@@ -4,7 +4,7 @@
 ```
 npm install gulp -g
 npm install bower -g
-gulp install
+npm install
 bower install
 
 gulp run
