@@ -10,6 +10,8 @@ bowerFiles = require 'main-bower-files'
 jadePattern = ['src/jade/**']
 assetsPattern = ['src/assets/**']
 
+port = 8080
+
 gulp.task 'clean:all', (cb) ->
       del 'dist/*', cb
 
@@ -25,7 +27,7 @@ gulp.task 'assets', (callback) ->
         'bower_components/**/*.js'
     ]
     .pipe gulp.dest('./dist/assets')
-    
+
     gulp.src assetsPattern
     .pipe gulp.dest('./dist/assets')
 
@@ -40,15 +42,15 @@ gulp.task 'debugserver', ->
     .pipe webserver
         host: 'localhost'
         livereload: true
-        port: 8000
+        port: port
     .pipe open
-        uri: 'http://localhost:8000'
+        uri: "http://localhost:#{port}"
 
 gulp.task 'webserver', ->
     gulp.src 'dist'
     .pipe webserver
         host: '0.0.0.0'
-        port: 8000
+        port: port
 
 gulp.task 'debug', (cb)->
     runSequence ['clean:all'], ['assets', 'jade'], ['watch', 'debugserver'], cb
