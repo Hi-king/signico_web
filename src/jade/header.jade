@@ -26,5 +26,7 @@ head
   script(src="/assets/masonry/dist/masonry.pkgd.min.js")
   script
     | $(function(){
-    |   $(".grid").masonry();
+    |   $(window).load(function(){ // @see http://www.webdesignleaves.com/wp/jquery/1340/
+    |     $(".grid").masonry();
+    |   });
     | });
