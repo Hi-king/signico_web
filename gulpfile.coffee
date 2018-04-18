@@ -6,11 +6,16 @@ open = require 'gulp-open'
 runSequence = require('run-sequence').use(gulp)
 del = require 'del'
 bowerFiles = require 'main-bower-files'
+minimist = require 'minimist'
 
 jadePattern = ['src/jade/**']
 assetsPattern = ['src/assets/**']
 
-port = 8080
+options = minimist(process.argv.slice(2), {
+  string: 'port',
+  default: { port: '8080' }
+});
+port = options.port
 
 gulp.task 'clean:all', (cb) ->
       del 'dist/*', cb
